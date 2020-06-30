@@ -6,7 +6,7 @@ Python program to add custom cover image to an epub file.
 pip install EbookLib
 
 ## Working
-- Name the epub file as test.epub
+- Name the epub file as original.epub
 - Name the cover image as cover.jpg
 - Place the above two files with edit_cover_img.py in the same folder
 - Run edit_cover_img.py
@@ -15,7 +15,7 @@ pip install EbookLib
 A new epub file with the custom cover image is created.
 
 ## To do
-- [ ] Include images along with text in chapters
+- [X] Include images along with text in chapters
 - [ ] Find a suitable database
 - [ ] How to connect front end to python code
 - [ ] Create a react website to do this task

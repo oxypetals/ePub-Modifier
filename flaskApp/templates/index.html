@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ePub Editor</title>
+    <style>
+      /* .display-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } */
+      input {
+        margin-left: 10px;
+      }
+    </style>
+</head>
+<body>
+<div align="center">
+    <h1>Set ePub cover image</h1>
+    <h2>Upload cover image and epub</h2>
+    <br />
+    <br />
+    <form method='POST' action='/create' enctype='multipart/form-data' class='display-flex'>
+      <label for="cover_image">Cover Image (jpg only): </label>
+      <input type='file' name='cover_image' id='cover_image'>
+      <label for="original">ePub file: </label>
+      <input type='file' name='original' id='original'>
+      <br />
+      <br />
+      <input type='submit'>
+    </form>
+</div>
+</body>
+</html>

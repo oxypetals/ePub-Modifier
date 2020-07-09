@@ -108,15 +108,15 @@ input[type=submit]{
 
     <h3 align="left" style="font-size: 17px; font-weight: 70; padding-left: 80px; padding-bottom: 0px;">Drag and drop the file or click and select file</h3>
 
-    <form method='POST' action='/create' enctype='multipart/form-data' class='display-flex'>
 
+    <form method='POST' action='/create' enctype='multipart/form-data' class='display-flex'>
 
       <label for="cover_image">
         <div class='droptext'>
           <p>Cover Image (jpg only)</p>
           <p id="imgname" style="padding-left:10px; word-wrap: normal;"></p>
         </div>
-        <input type='file' name='cover_image' id='cover_image'>
+        <input type='file' name='cover_image' id='cover_image' accept=".jpg">
       </label>
 
       <br />
@@ -126,7 +126,7 @@ input[type=submit]{
           <p>ePub file</p>
           <p id="epubname" style="padding-left:10px; word-wrap: normal;"></p>
         </div>
-        <input type='file' name='original' id='original'>
+        <input type='file' name='original' id='original' accept=".epub">
       </label>
 
       <br />

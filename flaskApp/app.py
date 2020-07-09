@@ -1,25 +1,28 @@
 import os
-from flask import Flask, request, Response, send_from_directory, render_template
+from flask import Flask, request, Response, send_from_directory, render_template, after_this_request
 import ebooklib
 from ebooklib import epub
 from datetime import datetime
 
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
+# DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
 
 app = Flask(__name__)
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
+# app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 
 
 @app.route("/")
 def index():
+    # if(ori_title+'_modified'+'.epub' in app.config['UPLOAD_FOLDER']):
+    #     os.remove(app.config['UPLOAD_FOLDER']+'/'+ori_title+'_modified'+'.epub')
     return render_template('index.html')
 
 
+# this is triggered when submit button is clicked
 @app.route("/create", methods=['GET', 'POST'])
 def create():
     if 'cover_image' and 'original' in request.files:
@@ -131,9 +134,14 @@ def create():
         # create spin, add cover page as first page
         book.spine = ['cover', 'nav', c1, c2] + ch_list
 
-        epub.write_epub(os.path.join(app.config['UPLOAD_FOLDER'], ori_title+'_modified'+'.epub'), book, {})
+        epub.write_epub(os.path.join(app.config['UPLOAD_FOLDER'], ori_title+'_'+dt_string+'.epub'), book, {})
 
-        return send_from_directory(app.config['UPLOAD_FOLDER'], ori_title+'_modified'+'.epub', as_attachment=True)
+        @after_this_request
+        def remove_file(response):
+            os.remove(app.config['UPLOAD_FOLDER']+'/'+ori_title+'_'+dt_string+'.epub')
+            return response
+
+        return send_from_directory(app.config['UPLOAD_FOLDER'], ori_title+'_'+dt_string+'.epub', as_attachment=True)
 
 
     else:

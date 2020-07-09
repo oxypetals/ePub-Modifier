@@ -1,22 +1,13 @@
-# ePub-Modifier
-Python program to add custom cover image to an epub file created using [EbookLib python library](https://pypi.org/project/EbookLib/).
-
-## Requirements
-- pip install EbookLib
-
-
-## Working
-- Name the epub file as original.epub
-- Name the cover image as cover.jpg
-- Place the above two files with edit_cover_img.py in the same folder
-- Run edit_cover_img.py
+# ePub-Editor
+ePub Editor can be used to add custom cover image to an epub file. Built using Python, Flask and [EbookLib python library](https://pypi.org/project/EbookLib/).
+Deployed using PythonAnywhere: http://epubeditor.pythonanywhere.com/
 
 ## Result
-A new epub file with the custom cover image is created.
-<img src="https://user-images.githubusercontent.com/30766392/86977015-59dc7a80-c199-11ea-9214-be0fc208087c.png" />
+Simply upload cover image and epub file and click on submit to download the edited epub.
+
+<img src="https://user-images.githubusercontent.com/30766392/87045246-4c64d600-c215-11ea-84c8-27ccb2b5d8c5.png" width="90%"/>
 
 ## To do
 - [X] Include images along with text in chapters
-- [X] Find a suitable database
 - [X] Connect front end to python code
-- [ ] Deploy flask app
+- [X] Deploy flask app
